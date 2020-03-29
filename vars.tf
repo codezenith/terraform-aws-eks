@@ -17,7 +17,7 @@ variable "cidr" {
     "B"   = 120,
     "C"   = 0,
     "D"   = 0,
-    "NET" = 16
+    "NET" = 20
   }
 }
 
@@ -35,7 +35,7 @@ variable "subnet_count" {
 
 variable "subnet_netbit" {
   type        = number
-  description = "Netbit number of subnets to provision (e.g.: VPC is /20, subnet_netbit is /24 for subnet_count = 2)"
+  description = "Netbit number of subnets to provision (e.g.: X.X.X.X/24 <-- subnet_netbit)"
   default     = 24
 }
 
