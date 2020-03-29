@@ -87,23 +87,6 @@ variable "eks_cluster_log_types" {
   default     = ["scheduler", "controllerManager"]
 }
 
-
-
-variable "iam_eks_node_policy_arn" {
-  type        = list(string)
-  description = "List of Policies to attach to the EKS node role"
-  default = [
-    "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
-    "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
-    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
-    "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
-    "arn:aws:iam::aws:policy/AmazonEKSServicePolicy",
-    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
-    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess",
-    "arn:aws:iam::aws:policy/AmazonRoute53FullAccess"
-  ]
-}
-
 variable "iam_eks_cluster_name" {
   type        = string
   description = "EKS Cluster IAM role name"
@@ -128,22 +111,10 @@ variable "eks_node_group_name" {
   default     = "terraform-eks-ng"
 }
 
-variable "eks_worker_ami_owner_canonical" {
-  type        = string
-  description = "EKS Worker node ami canonical owner id"
-  default     = "602401143452"
-}
-
 variable "eks_worker_instance_type" {
   type        = list(string)
   description = "EKS Worker node EC2 instance type"
   default     = [ "t3.large" ]
-}
-
-variable "eks_launch_config_prefix" {
-  type        = string
-  description = "EKS Worker node launch configuration prefix"
-  default     = "terraform-eks"
 }
 
 variable "eks_auto_scaling_group_name" {
@@ -168,4 +139,19 @@ variable "eks_worker_max_size" {
   type        = number
   description = "EKS Worker nodes maximum nodes"
   default     = 5
+}
+
+variable "iam_eks_node_policy_arn" {
+  type        = list(string)
+  description = "List of Policies to attach to the EKS node role"
+  default = [
+    "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+    "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+    "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+    "arn:aws:iam::aws:policy/AmazonEKSServicePolicy",
+    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess",
+    "arn:aws:iam::aws:policy/AmazonRoute53FullAccess"
+  ]
 }

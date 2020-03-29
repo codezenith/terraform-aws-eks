@@ -31,7 +31,7 @@ data "aws_availability_zones" "available" {}
    }
  }
 
- resource "aws_route_table" "rt_table" {
+ resource "aws_route_table" "rt-table" {
    vpc_id = aws_vpc.vpc.id
 
    route {
@@ -40,9 +40,9 @@ data "aws_availability_zones" "available" {}
    }
  }
 
- resource "aws_route_table_association" "rt_table_assoc" {
+ resource "aws_route_table_association" "rt-table-assoc" {
    count = var.subnet_count
 
    subnet_id      = aws_subnet.subnet[count.index].id
-   route_table_id = aws_route_table.rt_table.id
+   route_table_id = aws_route_table.rt-table.id
  }
